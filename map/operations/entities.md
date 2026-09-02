@@ -2,7 +2,7 @@
 
 # Entities — operations
 
-Accessor: `client.entities` · Source: `coin_gecko_demo_api/apis/entities.py` · 2 operations
+Accessor: `client.entities` · Source: `coin_gecko/apis/entities.py` · 2 operations
 
 Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
@@ -19,9 +19,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `EntityOrStr` | `coin_gecko_demo_api/models/enums/entity.py` |
-| `Order5OrStr` | `coin_gecko_demo_api/models/enums/order5.py` |
-| `PublicTreasury` | `coin_gecko_demo_api/models/unions/public_treasury.py` |
+| `EntityOrStr` | `coin_gecko/models/enums/entity.py` |
+| `Order5OrStr` | `coin_gecko/models/enums/order5.py` |
+| `PublicTreasury` | `coin_gecko/models/unions/public_treasury.py` |
 
 ### client.entities.entities_list
 
@@ -35,6 +35,6 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `EntityTypeOrStr` | `coin_gecko_demo_api/models/enums/entity_type.py` |
-| `EntitiesList` | `coin_gecko_demo_api/models/entities_list.py` |
+| `EntityTypeOrStr` | `coin_gecko/models/enums/entity_type.py` |
+| `EntitiesList` | `coin_gecko/models/entities_list.py` |
 

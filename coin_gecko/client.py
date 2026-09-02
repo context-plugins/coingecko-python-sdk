@@ -17,7 +17,7 @@ from .apis.public_treasury_api import PublicTreasuryApi
 from .apis.search_api import SearchApi
 from .apis.simple import Simple
 from .auth import AuthSchemes
-from .base_client import DEFAULT_TIMEOUT, BaseCoinGeckoDemoApiClient
+from .base_client import DEFAULT_TIMEOUT, BaseCoinGeckoClient
 from .core import (
     OPERATING_SYSTEM,
     PYTHON_RUNTIME,
@@ -31,7 +31,7 @@ from .core import (
 )
 
 
-class CoinGeckoDemoApiClient(BaseCoinGeckoDemoApiClient[RawClient]):
+class CoinGeckoClient(BaseCoinGeckoClient[RawClient]):
     def __init__(
         self,
         *,
@@ -45,7 +45,7 @@ class CoinGeckoDemoApiClient(BaseCoinGeckoDemoApiClient[RawClient]):
         self._raw_client = RawClient(
             http_client=custom_http_client if custom_http_client is not None else HttpxClient(timeout=timeout),
             global_headers=[
-                param[str]("User-Agent", "CoinGeckoDemoApiClient/3.0.0 Python"),
+                param[str]("User-Agent", "CoinGeckoClient/3.0.0 Python"),
                 param[str]("X-APIMatic-Lang", "Python"),
                 param[str]("X-APIMatic-Package-Version", "3.0.0"),
                 param[str]("X-APIMatic-Gen-Version", "4.0.0"),
@@ -114,4 +114,4 @@ class CoinGeckoDemoApiClient(BaseCoinGeckoDemoApiClient[RawClient]):
         self.close()
 
 
-Client = CoinGeckoDemoApiClient
+Client = CoinGeckoClient

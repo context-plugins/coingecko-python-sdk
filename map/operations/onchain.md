@@ -2,7 +2,7 @@
 
 # Onchain — operations
 
-Accessor: `client.onchain` · Source: `coin_gecko_demo_api/apis/onchain.py` · 20 operations
+Accessor: `client.onchain` · Source: `coin_gecko/apis/onchain.py` · 20 operations
 
 Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
@@ -18,7 +18,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `DexesList` | `coin_gecko_demo_api/models/dexes_list.py` |
+| `DexesList` | `coin_gecko/models/dexes_list.py` |
 
 ### client.onchain.latest_pools_list
 
@@ -32,7 +32,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `Pool` | `coin_gecko_demo_api/models/pool.py` |
+| `Pool` | `coin_gecko/models/pool.py` |
 
 ### client.onchain.latest_pools_network
 
@@ -46,7 +46,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `Pool` | `coin_gecko_demo_api/models/pool.py` |
+| `Pool` | `coin_gecko/models/pool.py` |
 
 ### client.onchain.networks_list
 
@@ -60,7 +60,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `NetworksList` | `coin_gecko_demo_api/models/networks_list.py` |
+| `NetworksList` | `coin_gecko/models/networks_list.py` |
 
 ### client.onchain.onchain_simple_price
 
@@ -74,7 +74,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `OnchainSimplePrice` | `coin_gecko_demo_api/models/onchain_simple_price.py` |
+| `OnchainSimplePrice` | `coin_gecko/models/onchain_simple_price.py` |
 
 ### client.onchain.pool_address
 
@@ -88,7 +88,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `PoolAddressData` | `coin_gecko_demo_api/models/pool_address_data.py` |
+| `PoolAddressData` | `coin_gecko/models/pool_address_data.py` |
 
 ### client.onchain.pool_ohlcv_contract_address
 
@@ -103,9 +103,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `TimeframeOrStr` | `coin_gecko_demo_api/models/enums/timeframe.py` |
-| `CurrencyOrStr` | `coin_gecko_demo_api/models/enums/currency.py` |
-| `Ohlcv` | `coin_gecko_demo_api/models/ohlcv.py` |
+| `TimeframeOrStr` | `coin_gecko/models/enums/timeframe.py` |
+| `CurrencyOrStr` | `coin_gecko/models/enums/currency.py` |
+| `Ohlcv` | `coin_gecko/models/ohlcv.py` |
 
 ### client.onchain.pool_token_info_contract_address
 
@@ -119,8 +119,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `Include2OrStr` | `coin_gecko_demo_api/models/enums/include2.py` |
-| `PoolTokensInfo` | `coin_gecko_demo_api/models/pool_tokens_info.py` |
+| `Include2OrStr` | `coin_gecko/models/enums/include2.py` |
+| `PoolTokensInfo` | `coin_gecko/models/pool_tokens_info.py` |
 
 ### client.onchain.pool_trades_contract_address
 
@@ -134,7 +134,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `Trades` | `coin_gecko_demo_api/models/trades.py` |
+| `Trades` | `coin_gecko/models/trades.py` |
 
 ### client.onchain.pools_addresses
 
@@ -148,7 +148,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `MultiPoolAddressData` | `coin_gecko_demo_api/models/multi_pool_address_data.py` |
+| `MultiPoolAddressData` | `coin_gecko/models/multi_pool_address_data.py` |
 
 ### client.onchain.search_pools
 
@@ -162,7 +162,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `PoolSearch` | `coin_gecko_demo_api/models/pool_search.py` |
+| `PoolSearch` | `coin_gecko/models/pool_search.py` |
 
 ### client.onchain.token_data_contract_address
 
@@ -176,8 +176,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `IncludeOrStr` | `coin_gecko_demo_api/models/enums/include.py` |
-| `TokenData` | `coin_gecko_demo_api/models/token_data.py` |
+| `IncludeOrStr` | `coin_gecko/models/enums/include.py` |
+| `TokenData` | `coin_gecko/models/token_data.py` |
 
 ### client.onchain.token_info_contract_address
 
@@ -191,7 +191,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `TokenInfo` | `coin_gecko_demo_api/models/token_info.py` |
+| `TokenInfo` | `coin_gecko/models/token_info.py` |
 
 ### client.onchain.tokens_data_contract_addresses
 
@@ -205,8 +205,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `IncludeOrStr` | `coin_gecko_demo_api/models/enums/include.py` |
-| `MultiTokenData` | `coin_gecko_demo_api/models/multi_token_data.py` |
+| `IncludeOrStr` | `coin_gecko/models/enums/include.py` |
+| `MultiTokenData` | `coin_gecko/models/multi_token_data.py` |
 
 ### client.onchain.tokens_info_recent_updated
 
@@ -220,8 +220,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `Include3OrStr` | `coin_gecko_demo_api/models/enums/include3.py` |
-| `TokenInfoRecentlyUpdated` | `coin_gecko_demo_api/models/token_info_recently_updated.py` |
+| `Include3OrStr` | `coin_gecko/models/enums/include3.py` |
+| `TokenInfoRecentlyUpdated` | `coin_gecko/models/token_info_recently_updated.py` |
 
 ### client.onchain.top_pools_contract_address
 
@@ -235,8 +235,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `Sort2OrStr` | `coin_gecko_demo_api/models/enums/sort2.py` |
-| `Pool` | `coin_gecko_demo_api/models/pool.py` |
+| `Sort2OrStr` | `coin_gecko/models/enums/sort2.py` |
+| `Pool` | `coin_gecko/models/pool.py` |
 
 ### client.onchain.top_pools_dex
 
@@ -250,8 +250,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `SortOrStr` | `coin_gecko_demo_api/models/enums/sort.py` |
-| `Pool` | `coin_gecko_demo_api/models/pool.py` |
+| `SortOrStr` | `coin_gecko/models/enums/sort.py` |
+| `Pool` | `coin_gecko/models/pool.py` |
 
 ### client.onchain.top_pools_network
 
@@ -265,8 +265,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `SortOrStr` | `coin_gecko_demo_api/models/enums/sort.py` |
-| `Pool` | `coin_gecko_demo_api/models/pool.py` |
+| `SortOrStr` | `coin_gecko/models/enums/sort.py` |
+| `Pool` | `coin_gecko/models/pool.py` |
 
 ### client.onchain.trending_pools_list
 
@@ -280,8 +280,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `DurationOrStr` | `coin_gecko_demo_api/models/enums/duration.py` |
-| `Pool` | `coin_gecko_demo_api/models/pool.py` |
+| `DurationOrStr` | `coin_gecko/models/enums/duration.py` |
+| `Pool` | `coin_gecko/models/pool.py` |
 
 ### client.onchain.trending_pools_network
 
@@ -295,6 +295,6 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `DurationOrStr` | `coin_gecko_demo_api/models/enums/duration.py` |
-| `Pool` | `coin_gecko_demo_api/models/pool.py` |
+| `DurationOrStr` | `coin_gecko/models/enums/duration.py` |
+| `Pool` | `coin_gecko/models/pool.py` |
 

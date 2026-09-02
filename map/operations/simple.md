@@ -2,7 +2,7 @@
 
 # Simple — operations
 
-Accessor: `client.simple` · Source: `coin_gecko_demo_api/apis/simple.py` · 3 operations
+Accessor: `client.simple` · Source: `coin_gecko/apis/simple.py` · 3 operations
 
 Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded, and an operation with no table mentions nothing but builtins and those.
 
@@ -18,9 +18,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `IncludeTokensOrStr` | `coin_gecko_demo_api/models/enums/include_tokens.py` |
-| `PrecisionOrStr` | `coin_gecko_demo_api/models/enums/precision.py` |
-| `SimplePrice` | `coin_gecko_demo_api/models/simple_price.py` |
+| `IncludeTokensOrStr` | `coin_gecko/models/enums/include_tokens.py` |
+| `PrecisionOrStr` | `coin_gecko/models/enums/precision.py` |
+| `SimplePrice` | `coin_gecko/models/simple_price.py` |
 
 ### client.simple.simple_supported_currencies
 
@@ -43,6 +43,6 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `PrecisionOrStr` | `coin_gecko_demo_api/models/enums/precision.py` |
-| `SimplePrice` | `coin_gecko_demo_api/models/simple_price.py` |
+| `PrecisionOrStr` | `coin_gecko/models/enums/precision.py` |
+| `SimplePrice` | `coin_gecko/models/simple_price.py` |
 

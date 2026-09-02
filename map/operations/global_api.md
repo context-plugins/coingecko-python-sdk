@@ -2,7 +2,7 @@
 
 # GlobalApi — operations
 
-Accessor: `client.global_api` · Source: `coin_gecko_demo_api/apis/global_api.py` · 2 operations
+Accessor: `client.global_api` · Source: `coin_gecko/apis/global_api.py` · 2 operations
 
 Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
@@ -17,7 +17,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `GlobalModel` | `coin_gecko_demo_api/models/global_model.py` |
+| `GlobalModel` | `coin_gecko/models/global_model.py` |
 
 ### client.global_api.global_defi
 
@@ -30,5 +30,5 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `GlobalDeFi` | `coin_gecko_demo_api/models/global_de_fi.py` |
+| `GlobalDeFi` | `coin_gecko/models/global_de_fi.py` |
 

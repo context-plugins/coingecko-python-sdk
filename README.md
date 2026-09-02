@@ -1,8 +1,8 @@
-# CoinGecko Demo API SDK
+# CoinGecko SDK
 
 [![Built with APIMatic][apimatic-badge]][apimatic-url] [![License: MIT][license-badge]][license-url] [![Python 3.10+][python-badge]][python-url]
 
-The CoinGecko Demo API SDK for Python provides access to the CoinGecko Demo API REST APIs from Python applications.
+The CoinGecko SDK for Python provides access to the CoinGecko REST APIs from Python applications.
 
 > [!TIP]
 > **Looking for a specific signature, model, enum, or error type?** This SDK ships a generated
@@ -16,15 +16,15 @@ The CoinGecko Demo API SDK for Python provides access to the CoinGecko Demo API 
 Install the Python SDK from PyPI, with whichever package manager your project uses:
 
 ```bash
-pip install coin-gecko-demo-api
+pip install coin-gecko
 ```
 
 ```bash
-uv add coin-gecko-demo-api
+uv add coin-gecko
 ```
 
 ```bash
-poetry add coin-gecko-demo-api
+poetry add coin-gecko
 ```
 
 ---
@@ -33,36 +33,36 @@ poetry add coin-gecko-demo-api
 
 ### Synchronous client
 
-Construct `CoinGeckoDemoApiClient` with keyword arguments, and call `close()` when you are done. Every argument is optional; the full list is in the [SDK map](sdk-map.md).
+Construct `CoinGeckoClient` with keyword arguments, and call `close()` when you are done. Every argument is optional; the full list is in the [SDK map](sdk-map.md).
 
 ```python
-from coin_gecko_demo_api import CoinGeckoDemoApiClient
+from coin_gecko import CoinGeckoClient
 
-client = CoinGeckoDemoApiClient(header_auth="YOUR_API_KEY", query_auth="YOUR_API_KEY")
+client = CoinGeckoClient(header_auth="YOUR_API_KEY", query_auth="YOUR_API_KEY")
 
 # TODO: call endpoints here -- see api-reference.md
 
 client.close()
 ```
 
-Alternatively, scope it -- `with CoinGeckoDemoApiClient(...) as client:` closes the pool on exit; see [Best Practices](#best-practices).
+Alternatively, scope it -- `with CoinGeckoClient(...) as client:` closes the pool on exit; see [Best Practices](#best-practices).
 
-`Client` is exported as an alias of `CoinGeckoDemoApiClient`, so `from coin_gecko_demo_api import Client` also works.
+`Client` is exported as an alias of `CoinGeckoClient`, so `from coin_gecko import Client` also works.
 
 The SDK accepts every model-typed input in two interchangeable spellings, both type-checked: the typed model, or a plain dict with the same keys -- the `OrDict` and `Model | ModelDict` unions in the [SDK map](sdk-map.md). Pick whichever suits the call site: the dict form needs no import, while the model form adds a keyword-checked constructor and editor completion.
 
 ### Asynchronous client
 
-`AsyncCoinGeckoDemoApiClient` mirrors `CoinGeckoDemoApiClient` with **identical method names**, and every endpoint method is a coroutine. It takes the same arguments, with some differences -- for example, the transport argument is `custom_async_http_client`.
+`AsyncCoinGeckoClient` mirrors `CoinGeckoClient` with **identical method names**, and every endpoint method is a coroutine. It takes the same arguments, with some differences -- for example, the transport argument is `custom_async_http_client`.
 
 ```python
 from asyncio import run
 
-from coin_gecko_demo_api import AsyncCoinGeckoDemoApiClient
+from coin_gecko import AsyncCoinGeckoClient
 
 
 async def main() -> None:
-    client = AsyncCoinGeckoDemoApiClient(header_auth="YOUR_API_KEY", query_auth="YOUR_API_KEY")
+    client = AsyncCoinGeckoClient(header_auth="YOUR_API_KEY", query_auth="YOUR_API_KEY")
     # TODO: call endpoints here, awaiting each -- see api-reference.md
     await client.aclose()
 
@@ -70,7 +70,7 @@ async def main() -> None:
 run(main())
 ```
 
-Alternatively, scope it -- `async with AsyncCoinGeckoDemoApiClient(...) as client:` closes the pool on exit. Only the async spelling is `aclose`, matching httpx; see [Best Practices](#best-practices).
+Alternatively, scope it -- `async with AsyncCoinGeckoClient(...) as client:` closes the pool on exit. Only the async spelling is `aclose`, matching httpx; see [Best Practices](#best-practices).
 
 `AsyncClient` is the exported alias. Each client accepts **only** its own transport argument; passing the other's is a `TypeError` at runtime and an error under mypy.
 
@@ -96,11 +96,11 @@ Consult the map before scanning or grepping the source: it answers call-level co
 ## Best Practices
 
 > [!TIP]
-> Use a **single `CoinGeckoDemoApiClient` instance** for the lifetime of your application and reuse it across
+> Use a **single `CoinGeckoClient` instance** for the lifetime of your application and reuse it across
 > all requests. Each instance owns its own connection pool, so an instance per request forfeits
 > connection reuse and leaks pools that are never closed.
 
-Match the disposal to the client's lifetime: an application-lifetime client is closed once at shutdown with `close()` / `aclose()`; where the lifetime fits a block, `with CoinGeckoDemoApiClient() as client:` / `async with AsyncCoinGeckoDemoApiClient() as client:` releases it automatically. Both are idempotent, but a closed client is not reusable: the next call raises. The client closes **whatever transport it holds**, including one you supplied via `custom_http_client` / `custom_async_http_client`; if you intend to reuse your own transport across clients, don't hand its lifetime to a `with` block.
+Match the disposal to the client's lifetime: an application-lifetime client is closed once at shutdown with `close()` / `aclose()`; where the lifetime fits a block, `with CoinGeckoClient() as client:` / `async with AsyncCoinGeckoClient() as client:` releases it automatically. Both are idempotent, but a closed client is not reusable: the next call raises. The client closes **whatever transport it holds**, including one you supplied via `custom_http_client` / `custom_async_http_client`; if you intend to reuse your own transport across clients, don't hand its lifetime to a `with` block.
 
 ## License
 
