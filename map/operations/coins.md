@@ -2,7 +2,7 @@
 
 # Coins — operations
 
-Accessor: `client.coins` · Source: `coin_gecko/apis/coins.py` · 13 operations
+Accessor: `client.coins` · Source: `coin_gecko_demo_api/apis/coins.py` · 13 operations
 
 Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
@@ -18,8 +18,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `Order2OrStr` | `coin_gecko/models/enums/order2.py` |
-| `Category1` | `coin_gecko/models/category1.py` |
+| `Order2OrStr` | `coin_gecko_demo_api/models/enums/order2.py` |
+| `Category1` | `coin_gecko_demo_api/models/category1.py` |
 
 ### client.coins.coins_categories_list
 
@@ -32,7 +32,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `CategoriesList` | `coin_gecko/models/categories_list.py` |
+| `CategoriesList` | `coin_gecko_demo_api/models/categories_list.py` |
 
 ### client.coins.coins_contract_address
 
@@ -46,7 +46,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `CoinsContractAddress` | `coin_gecko/models/coins_contract_address.py` |
+| `CoinsContractAddress` | `coin_gecko_demo_api/models/coins_contract_address.py` |
 
 ### client.coins.coins_id
 
@@ -60,8 +60,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `DexPairFormatOrStr` | `coin_gecko/models/enums/dex_pair_format.py` |
-| `CoinsId` | `coin_gecko/models/coins_id.py` |
+| `DexPairFormatOrStr` | `coin_gecko_demo_api/models/enums/dex_pair_format.py` |
+| `CoinsId` | `coin_gecko_demo_api/models/coins_id.py` |
 
 ### client.coins.coins_id_history
 
@@ -75,7 +75,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `CoinsIdHistory` | `coin_gecko/models/coins_id_history.py` |
+| `CoinsIdHistory` | `coin_gecko_demo_api/models/coins_id_history.py` |
 
 ### client.coins.coins_id_market_chart
 
@@ -89,9 +89,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `IntervalOrStr` | `coin_gecko/models/enums/interval.py` |
-| `PrecisionOrStr` | `coin_gecko/models/enums/precision.py` |
-| `CoinsMarketChart` | `coin_gecko/models/coins_market_chart.py` |
+| `IntervalOrStr` | `coin_gecko_demo_api/models/enums/interval.py` |
+| `PrecisionOrStr` | `coin_gecko_demo_api/models/enums/precision.py` |
+| `CoinsMarketChart` | `coin_gecko_demo_api/models/coins_market_chart.py` |
 
 ### client.coins.coins_id_market_chart_range
 
@@ -105,8 +105,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `PrecisionOrStr` | `coin_gecko/models/enums/precision.py` |
-| `CoinsMarketChart` | `coin_gecko/models/coins_market_chart.py` |
+| `PrecisionOrStr` | `coin_gecko_demo_api/models/enums/precision.py` |
+| `CoinsMarketChart` | `coin_gecko_demo_api/models/coins_market_chart.py` |
 
 ### client.coins.coins_id_ohlc
 
@@ -121,8 +121,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `DaysOrStr` | `coin_gecko/models/enums/days.py` |
-| `PrecisionOrStr` | `coin_gecko/models/enums/precision.py` |
+| `DaysOrStr` | `coin_gecko_demo_api/models/enums/days.py` |
+| `PrecisionOrStr` | `coin_gecko_demo_api/models/enums/precision.py` |
 
 ### client.coins.coins_id_tickers
 
@@ -136,9 +136,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `Order1OrStr` | `coin_gecko/models/enums/order1.py` |
-| `DexPairFormatOrStr` | `coin_gecko/models/enums/dex_pair_format.py` |
-| `CoinsIdTickers` | `coin_gecko/models/coins_id_tickers.py` |
+| `Order1OrStr` | `coin_gecko_demo_api/models/enums/order1.py` |
+| `DexPairFormatOrStr` | `coin_gecko_demo_api/models/enums/dex_pair_format.py` |
+| `CoinsIdTickers` | `coin_gecko_demo_api/models/coins_id_tickers.py` |
 
 ### client.coins.coins_list
 
@@ -152,8 +152,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `StatusOrStr` | `coin_gecko/models/enums/status.py` |
-| `CoinsList` | `coin_gecko/models/coins_list.py` |
+| `StatusOrStr` | `coin_gecko_demo_api/models/enums/status.py` |
+| `CoinsList` | `coin_gecko_demo_api/models/coins_list.py` |
 
 ### client.coins.coins_markets
 
@@ -167,11 +167,11 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `IncludeTokensOrStr` | `coin_gecko/models/enums/include_tokens.py` |
-| `OrderOrStr` | `coin_gecko/models/enums/order.py` |
-| `LocaleOrStr` | `coin_gecko/models/enums/locale.py` |
-| `PrecisionOrStr` | `coin_gecko/models/enums/precision.py` |
-| `CoinsMarket` | `coin_gecko/models/coins_market.py` |
+| `IncludeTokensOrStr` | `coin_gecko_demo_api/models/enums/include_tokens.py` |
+| `OrderOrStr` | `coin_gecko_demo_api/models/enums/order.py` |
+| `LocaleOrStr` | `coin_gecko_demo_api/models/enums/locale.py` |
+| `PrecisionOrStr` | `coin_gecko_demo_api/models/enums/precision.py` |
+| `CoinsMarket` | `coin_gecko_demo_api/models/coins_market.py` |
 
 ### client.coins.contract_address_market_chart
 
@@ -185,9 +185,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `IntervalOrStr` | `coin_gecko/models/enums/interval.py` |
-| `PrecisionOrStr` | `coin_gecko/models/enums/precision.py` |
-| `CoinsMarketChart` | `coin_gecko/models/coins_market_chart.py` |
+| `IntervalOrStr` | `coin_gecko_demo_api/models/enums/interval.py` |
+| `PrecisionOrStr` | `coin_gecko_demo_api/models/enums/precision.py` |
+| `CoinsMarketChart` | `coin_gecko_demo_api/models/coins_market_chart.py` |
 
 ### client.coins.contract_address_market_chart_range
 
@@ -201,6 +201,6 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `PrecisionOrStr` | `coin_gecko/models/enums/precision.py` |
-| `CoinsMarketChart` | `coin_gecko/models/coins_market_chart.py` |
+| `PrecisionOrStr` | `coin_gecko_demo_api/models/enums/precision.py` |
+| `CoinsMarketChart` | `coin_gecko_demo_api/models/coins_market_chart.py` |
 

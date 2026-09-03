@@ -2,7 +2,7 @@
 
 # Exchanges — operations
 
-Accessor: `client.exchanges` · Source: `coin_gecko/apis/exchanges.py` · 6 operations
+Accessor: `client.exchanges` · Source: `coin_gecko_demo_api/apis/exchanges.py` · 6 operations
 
 Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
@@ -17,7 +17,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ExchangeRates` | `coin_gecko/models/exchange_rates.py` |
+| `ExchangeRates` | `coin_gecko_demo_api/models/exchange_rates.py` |
 
 ### client.exchanges.exchanges
 
@@ -31,7 +31,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `Exchange1` | `coin_gecko/models/exchange1.py` |
+| `Exchange1` | `coin_gecko_demo_api/models/exchange1.py` |
 
 ### client.exchanges.exchanges_id
 
@@ -45,8 +45,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `DexPairFormatOrStr` | `coin_gecko/models/enums/dex_pair_format.py` |
-| `ExchangesId` | `coin_gecko/models/exchanges_id.py` |
+| `DexPairFormatOrStr` | `coin_gecko_demo_api/models/enums/dex_pair_format.py` |
+| `ExchangesId` | `coin_gecko_demo_api/models/exchanges_id.py` |
 
 ### client.exchanges.exchanges_id_tickers
 
@@ -60,9 +60,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `Order3OrStr` | `coin_gecko/models/enums/order3.py` |
-| `DexPairFormatOrStr` | `coin_gecko/models/enums/dex_pair_format.py` |
-| `CoinsIdTickers` | `coin_gecko/models/coins_id_tickers.py` |
+| `Order3OrStr` | `coin_gecko_demo_api/models/enums/order3.py` |
+| `DexPairFormatOrStr` | `coin_gecko_demo_api/models/enums/dex_pair_format.py` |
+| `CoinsIdTickers` | `coin_gecko_demo_api/models/coins_id_tickers.py` |
 
 ### client.exchanges.exchanges_id_volume_chart
 
@@ -77,8 +77,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `DaysOrStr` | `coin_gecko/models/enums/days.py` |
-| `ExchangeVolumeChart` | `coin_gecko/models/unions/exchange_volume_chart.py` |
+| `DaysOrStr` | `coin_gecko_demo_api/models/enums/days.py` |
+| `ExchangeVolumeChart` | `coin_gecko_demo_api/models/unions/exchange_volume_chart.py` |
 
 ### client.exchanges.exchanges_list
 
@@ -92,6 +92,6 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `StatusOrStr` | `coin_gecko/models/enums/status.py` |
-| `ExchangesList` | `coin_gecko/models/exchanges_list.py` |
+| `StatusOrStr` | `coin_gecko_demo_api/models/enums/status.py` |
+| `ExchangesList` | `coin_gecko_demo_api/models/exchanges_list.py` |
 

@@ -17,7 +17,7 @@ from .apis.public_treasury_api import AsyncPublicTreasuryApi
 from .apis.search_api import AsyncSearchApi
 from .apis.simple import AsyncSimple
 from .auth import AsyncAuthSchemes
-from .base_client import DEFAULT_TIMEOUT, BaseCoinGeckoClient
+from .base_client import DEFAULT_TIMEOUT, BaseCoinGeckoDemoApiClient
 from .core import (
     OPERATING_SYSTEM,
     PYTHON_RUNTIME,
@@ -31,7 +31,7 @@ from .core import (
 )
 
 
-class AsyncCoinGeckoClient(BaseCoinGeckoClient[AsyncRawClient]):
+class AsyncCoinGeckoDemoApiClient(BaseCoinGeckoDemoApiClient[AsyncRawClient]):
     def __init__(
         self,
         *,
@@ -47,7 +47,7 @@ class AsyncCoinGeckoClient(BaseCoinGeckoClient[AsyncRawClient]):
                 custom_async_http_client if custom_async_http_client is not None else AsyncHttpxClient(timeout=timeout)
             ),
             global_headers=[
-                param[str]("User-Agent", "CoinGeckoClient/3.0.0 Python"),
+                param[str]("User-Agent", "CoinGeckoDemoApiClient/3.0.0 Python"),
                 param[str]("X-APIMatic-Lang", "Python"),
                 param[str]("X-APIMatic-Package-Version", "3.0.0"),
                 param[str]("X-APIMatic-Gen-Version", "4.0.0"),
@@ -116,4 +116,4 @@ class AsyncCoinGeckoClient(BaseCoinGeckoClient[AsyncRawClient]):
         await self.aclose()
 
 
-AsyncClient = AsyncCoinGeckoClient
+AsyncClient = AsyncCoinGeckoDemoApiClient

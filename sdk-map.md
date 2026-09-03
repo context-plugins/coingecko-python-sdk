@@ -1,14 +1,14 @@
 <!-- Generated file — do not edit; regenerated with the SDK. -->
 
-# SDK map — CoinGecko (Python)
+# SDK map — CoinGecko Demo API (Python)
 
 > A generated table of contents for this SDK. Consult this map and its sub-pages to learn signatures, error types, and server/auth wiring **by lookup**. Model shapes and enum values are *not* duplicated here — the map names the module declaring each type; read the shape there. Every name is the emitted spelling, so a wrong one fails at import rather than working silently.
 
 |  |  |
 | --- | --- |
-| SDK display name | CoinGecko |
-| Root package | `coin_gecko` |
-| Distribution name | `coin-gecko` |
+| SDK display name | CoinGecko Demo API |
+| Root package | `coin_gecko_demo_api` |
+| Distribution name | `coin-gecko-demo-api` |
 | Requires | Python 3.10 or later |
 | API spec version | `3.0.0` |
 | Generator | APIMatic |
@@ -24,27 +24,27 @@ All `Source` paths on this map and its sub-pages are relative to the **SDK root*
 ### Synchronous client
 
 ```python
-from coin_gecko import CoinGeckoClient
+from coin_gecko_demo_api import CoinGeckoDemoApiClient
 
-client = CoinGeckoClient(header_auth="YOUR_API_KEY", query_auth="YOUR_API_KEY")
+client = CoinGeckoDemoApiClient(header_auth="YOUR_API_KEY", query_auth="YOUR_API_KEY")
 
 # TODO: call endpoints here -- see api-reference.md
 
 client.close()
 ```
 
-Alternatively, scope it — `with CoinGeckoClient(...) as client:` closes the pool on exit.
+Alternatively, scope it — `with CoinGeckoDemoApiClient(...) as client:` closes the pool on exit.
 
 ### Asynchronous client
 
 ```python
 from asyncio import run
 
-from coin_gecko import AsyncCoinGeckoClient
+from coin_gecko_demo_api import AsyncCoinGeckoDemoApiClient
 
 
 async def main() -> None:
-    client = AsyncCoinGeckoClient(header_auth="YOUR_API_KEY", query_auth="YOUR_API_KEY")
+    client = AsyncCoinGeckoDemoApiClient(header_auth="YOUR_API_KEY", query_auth="YOUR_API_KEY")
     # TODO: call endpoints here, awaiting each -- see api-reference.md
     await client.aclose()
 
@@ -52,15 +52,15 @@ async def main() -> None:
 run(main())
 ```
 
-Alternatively, scope it — `async with AsyncCoinGeckoClient(...) as client:` closes the pool on exit.
+Alternatively, scope it — `async with AsyncCoinGeckoDemoApiClient(...) as client:` closes the pool on exit.
 
-`AsyncClient` (`coin_gecko/async_client.py`) mirrors `Client` method for method, each endpoint method a coroutine. It takes the same keywords, except that each client accepts only its own transport and — where the **Async Type** column differs — only its own flavor.
+`AsyncClient` (`coin_gecko_demo_api/async_client.py`) mirrors `Client` method for method, each endpoint method a coroutine. It takes the same keywords, except that each client accepts only its own transport and — where the **Async Type** column differs — only its own flavor.
 
-`Client` and `AsyncClient` are aliases of `CoinGeckoClient` and `AsyncCoinGeckoClient` — the names tracebacks and `repr()` show; all four import from the root.
+`Client` and `AsyncClient` are aliases of `CoinGeckoDemoApiClient` and `AsyncCoinGeckoDemoApiClient` — the names tracebacks and `repr()` show; all four import from the root.
 
 `close()` / `aclose()` closes the transport even when you supplied one via `custom_http_client=` / `custom_async_http_client=`, and a closed client cannot be reused.
 
-Every API group is a property on the client (e.g. `client.coins`). Every constructor argument is optional and keyword-only. Sources: `coin_gecko/client.py`, `coin_gecko/async_client.py`:
+Every API group is a property on the client (e.g. `client.coins`). Every constructor argument is optional and keyword-only. Sources: `coin_gecko_demo_api/client.py`, `coin_gecko_demo_api/async_client.py`:
 
 | Keyword | Sync Type | Async Type | Default |
 | --- | --- | --- | --- |
@@ -75,8 +75,8 @@ The types those columns name — where each imports from and, for a credentials 
 
 | Type | Import from | Shape |
 | --- | --- | --- |
-| `HttpClient` | `coin_gecko.core` | protocol — `send(request: HttpRequest) -> HttpResponse` · `close()` |
-| `AsyncHttpClient` | `coin_gecko.core` | protocol — `async send(request: HttpRequest) -> HttpResponse` · `async aclose()` |
+| `HttpClient` | `coin_gecko_demo_api.core` | protocol — `send(request: HttpRequest) -> HttpResponse` · `close()` |
+| `AsyncHttpClient` | `coin_gecko_demo_api.core` | protocol — `async send(request: HttpRequest) -> HttpResponse` · `async aclose()` |
 
 ---
 
@@ -89,21 +89,21 @@ Every operation is reached in two response modes:
 
 What `.error` holds is fixed per operation. There are two cases:
 
-- **Case A — typed error.** The operation documents at least one error status, so `coin_gecko/errors/` declares a union alias over the bodies those statuses map to — `RawError` is always its last arm, for any undocumented status — and `.error` is annotated with that alias. Narrow it with `isinstance`. The operation blocks name the alias and the status each arm maps from.
-- **Case B — raw error.** The operation documents no error status; `.error` is `RawError` (`coin_gecko/core/results.py`): `status_code: int` · `content: bytes` · `text(encoding="utf-8"): str` · `json(): Any` · `response: HttpResponse`.
+- **Case A — typed error.** The operation documents at least one error status, so `coin_gecko_demo_api/errors/` declares a union alias over the bodies those statuses map to — `RawError` is always its last arm, for any undocumented status — and `.error` is annotated with that alias. Narrow it with `isinstance`. The operation blocks name the alias and the status each arm maps from.
+- **Case B — raw error.** The operation documents no error status; `.error` is `RawError` (`coin_gecko_demo_api/core/results.py`): `status_code: int` · `content: bytes` · `text(encoding="utf-8"): str` · `json(): Any` · `response: HttpResponse`.
 
-Core runtime types (`coin_gecko/core/`) — public members with their **declared types**, verbatim from source:
+Core runtime types (`coin_gecko_demo_api/core/`) — public members with their **declared types**, verbatim from source:
 
 | Type | Public members | Source |
 | --- | --- | --- |
-| `ApiError` — raised by every parsed call; `.error` is always `RawError` (no Case A alias in this SDK) | `error: E` · `status_code: int` · `response: HttpResponse` | `coin_gecko/core/exceptions.py` |
-| `ApiResult[T, E]` — returned by every raw call; the `Success[T] \| Failure[E]` union | `payload: T` (on `Success`) · `error: E` (on `Failure`) · `response: HttpResponse` (on both) | `coin_gecko/core/results.py` |
-| `RawError` | `status_code: int` · `content: bytes` · `text(encoding="utf-8"): str` · `json(): Any` · `response: HttpResponse` | `coin_gecko/core/results.py` |
+| `ApiError` — raised by every parsed call; `.error` is always `RawError` (no Case A alias in this SDK) | `error: E` · `status_code: int` · `response: HttpResponse` | `coin_gecko_demo_api/core/exceptions.py` |
+| `ApiResult[T, E]` — returned by every raw call; the `Success[T] \| Failure[E]` union | `payload: T` (on `Success`) · `error: E` (on `Failure`) · `response: HttpResponse` (on both) | `coin_gecko_demo_api/core/results.py` |
+| `RawError` | `status_code: int` · `content: bytes` · `text(encoding="utf-8"): str` · `json(): Any` · `response: HttpResponse` | `coin_gecko_demo_api/core/results.py` |
 
 Typed error bodies (the arms of a Case A alias) are ordinary models — no special handling. The operation's **Type sources** table gives the module that declares each one; read field names, declared types and JSON aliases there, as for any other model.
 
 ```python
-from coin_gecko.core import ApiError, RawError
+from coin_gecko_demo_api.core import ApiError, RawError
 
 try:
     response = client.coins.coins_categories()
@@ -127,7 +127,7 @@ Each links to a sub-page with one block per operation, headed by its full access
 | **Four spellings, one signature** — the same method name and parameters on `Client` and `AsyncClient`, each also reachable through `.with_raw_response`; the async twin is a coroutine to `await`, with the same return types and error case, and where the **Async Type** column differs, pass the type it names | Getting a client |
 | **Parsed raises, raw returns** — `ApiError` versus `ApiResult` | Error-handling model |
 | **Case B error is always `RawError`** — also the last arm of every Case A alias, where a block's **Error arms** bullet ends in it | Error-handling model |
-| **A trailing `request_options`** — keyword-only and optional, for per-call overrides such as a timeout or extra headers; every signature ends with it | here (`coin_gecko/core/request_options.py`) |
+| **A trailing `request_options`** — keyword-only and optional, for per-call overrides such as a timeout or extra headers; every signature ends with it | here (`coin_gecko_demo_api/core/request_options.py`) |
 | **Base URL `https://api.coingecko.com/api/v3`** — this SDK's only server; override it with `base_url="https://…"` | Servers & auth |
 | **Parameter names are literal** — signatures are generated code verbatim, and everything behind the bare `*` must be passed by name | here |
 | **A parameter's wire name is its Python name** — sent as-is on the path, query string, header or body, unless the block's **Params** bullet carries a wire name beside the role | here |
@@ -154,13 +154,13 @@ Sub-pages chunk per `###` block: each block is self-contained given the table ab
 
 ## Models — where they live, how to build them
 
-**Shapes live only in the source.** Every module under `coin_gecko/models/` declares one type plus its input companion, and every module under `coin_gecko/errors/` one alias plus the mapper that builds it; no two share a name. Take a type's module from the operation's **Type sources** table. When no retrieved chunk names it, the module is the type name in snake_case under the kind's directory below (`AssetPlatform` ↔ `asset_platform.py`). Never grep for a type.
+**Shapes live only in the source.** Every module under `coin_gecko_demo_api/models/` declares one type plus its input companion, and every module under `coin_gecko_demo_api/errors/` one alias plus the mapper that builds it; no two share a name. Take a type's module from the operation's **Type sources** table. When no retrieved chunk names it, the module is the type name in snake_case under the kind's directory below (`AssetPlatform` ↔ `asset_platform.py`). Never grep for a type.
 
 | Group | Count | Directory (module = `<type_name>.py`) |
 | --- | --- | --- |
-| Models (`SdkBaseModel` pydantic classes) | 192 | `coin_gecko/models/` |
-| Enums (`Enum` over `str`) — Python member names + wire values | 28 | `coin_gecko/models/enums/` |
-| Unions (plain) — `TypeAlias` over the arms | 3 | `coin_gecko/models/unions/` |
+| Models (`SdkBaseModel` pydantic classes) | 192 | `coin_gecko_demo_api/models/` |
+| Enums (`Enum` over `str`) — Python member names + wire values | 28 | `coin_gecko_demo_api/models/enums/` |
+| Unions (plain) — `TypeAlias` over the arms | 3 | `coin_gecko_demo_api/models/unions/` |
 
 Conventions: a model is a `SdkBaseModel` (pydantic) class; a field whose wire name differs from its Python name carries it as `Field(alias=…)` (`type_` ↔ `"type"`) — read the alias off the field rather than deriving it. An omittable field is annotated `Optional[T]` and defaults to `UNSET`, and one that may also be explicitly null is `OptionalNullable[T]`; both come from `core` and neither is `typing.Optional` — there is no `None` arm unless the spec declared the property nullable, so passing `None` to the first is a type error rather than a value that serializes.
 
@@ -170,12 +170,12 @@ Import paths by content type (`from <package> import <Name>`):
 
 | Contents | Import from |
 | --- | --- |
-| Client (root) | `coin_gecko` |
-| Operation controllers | `coin_gecko.apis` |
-| Models | `coin_gecko.models` |
-| Enums | `coin_gecko.models.enums` |
-| Unions | `coin_gecko.models.unions`, `coin_gecko.models` |
-| Core runtime (`ApiError`, `ApiResult`, `RawError`, …) | `coin_gecko.core` |
+| Client (root) | `coin_gecko_demo_api` |
+| Operation controllers | `coin_gecko_demo_api.apis` |
+| Models | `coin_gecko_demo_api.models` |
+| Enums | `coin_gecko_demo_api.models.enums` |
+| Unions | `coin_gecko_demo_api.models.unions`, `coin_gecko_demo_api.models` |
+| Core runtime (`ApiError`, `ApiResult`, `RawError`, …) | `coin_gecko_demo_api.core` |
 
 ---
 
@@ -192,7 +192,7 @@ Operation blocks name their scheme in an **Auth** bullet; an operation whose spe
 
 A scheme you did not configure is skipped silently rather than raising, and the request is sent anyway — so an authentication failure can mean no credential was sent rather than a bad one.
 
-**One environment, one server** (`coin_gecko/server/server_config.py`). The spec declares a single environment, so no `environment` keyword exists; the base URL and its override point:
+**One environment, one server** (`coin_gecko_demo_api/server/server_config.py`). The spec declares a single environment, so no `environment` keyword exists; the base URL and its override point:
 
 | Base URL | Override point |
 | --- | --- |

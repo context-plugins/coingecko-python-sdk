@@ -2,7 +2,7 @@
 
 # PublicTreasuryApi — operations
 
-Accessor: `client.public_treasury_api` · Source: `coin_gecko/apis/public_treasury_api.py` · 3 operations
+Accessor: `client.public_treasury_api` · Source: `coin_gecko_demo_api/apis/public_treasury_api.py` · 3 operations
 
 Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
@@ -18,7 +18,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `PublicTreasuryEntity` | `coin_gecko/models/public_treasury_entity.py` |
+| `PublicTreasuryEntity` | `coin_gecko_demo_api/models/public_treasury_entity.py` |
 
 ### client.public_treasury_api.public_treasury_entity_chart
 
@@ -32,7 +32,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `PublicTreasuryEntityChart` | `coin_gecko/models/public_treasury_entity_chart.py` |
+| `PublicTreasuryEntityChart` | `coin_gecko_demo_api/models/public_treasury_entity_chart.py` |
 
 ### client.public_treasury_api.public_treasury_transaction_history
 
@@ -46,6 +46,6 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `Order6OrStr` | `coin_gecko/models/enums/order6.py` |
-| `PublicTreasuryTransactionHistory` | `coin_gecko/models/public_treasury_transaction_history.py` |
+| `Order6OrStr` | `coin_gecko_demo_api/models/enums/order6.py` |
+| `PublicTreasuryTransactionHistory` | `coin_gecko_demo_api/models/public_treasury_transaction_history.py` |
 
