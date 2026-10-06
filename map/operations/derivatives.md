@@ -2,7 +2,7 @@
 
 # Derivatives — operations
 
-Accessor: `client.derivatives` · Source: `coin_gecko_demo_api/apis/derivatives.py` · 4 operations
+Accessor: `client.derivatives` · Source: `coin_gecko/apis/derivatives.py` · 4 operations
 
 Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
@@ -18,23 +18,23 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `Order4OrStr` | `coin_gecko_demo_api/models/enums/order4.py` |
-| `DerivativesExchange` | `coin_gecko_demo_api/models/derivatives_exchange.py` |
+| `Order4OrStr` | `coin_gecko/models/enums/order4.py` |
+| `DerivativesExchange` | `coin_gecko/models/derivatives_exchange.py` |
 
 ### client.derivatives.derivatives_exchanges_id
 
 - **Route**: `GET /derivatives/exchanges/{id}`
 - **Auth**: `header_auth` OR `query_auth`
-- **Signature**: `def derivatives_exchanges_id(*, id: str = "binance_futures", include_tickers: IncludeTickersOrStr | None = None, request_options: RequestOptionsOrDict | None = None)`
-- **Params**: `id` — path · `include_tickers` — query
+- **Signature**: `def derivatives_exchanges_id(*, id_: str = "binance_futures", include_tickers: IncludeTickersOrStr | None = None, request_options: RequestOptionsOrDict | None = None)`
+- **Params**: `id_` — path `id` · `include_tickers` — query
 - **Returns (parsed)**: `DerivativesExchangesId`
 - **Returns (raw)**: `ApiResult[DerivativesExchangesId, RawError]`
 - **Error**: `RawError` — **Case B**
 
 | Type | Source |
 | --- | --- |
-| `IncludeTickersOrStr` | `coin_gecko_demo_api/models/enums/include_tickers.py` |
-| `DerivativesExchangesId` | `coin_gecko_demo_api/models/derivatives_exchanges_id.py` |
+| `IncludeTickersOrStr` | `coin_gecko/models/enums/include_tickers.py` |
+| `DerivativesExchangesId` | `coin_gecko/models/derivatives_exchanges_id.py` |
 
 ### client.derivatives.derivatives_exchanges_list
 
@@ -47,7 +47,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `DerivativesExchangesList` | `coin_gecko_demo_api/models/derivatives_exchanges_list.py` |
+| `DerivativesExchangesList` | `coin_gecko/models/derivatives_exchanges_list.py` |
 
 ### client.derivatives.derivatives_tickers
 
@@ -60,5 +60,5 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `DerivativesTicker` | `coin_gecko_demo_api/models/derivatives_ticker.py` |
+| `DerivativesTicker` | `coin_gecko/models/derivatives_ticker.py` |
 
