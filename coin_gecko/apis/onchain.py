@@ -14,6 +14,7 @@ from ..core import (
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.dexes_list import DexesList
 from ..models.enums.currency import CurrencyOrStr
@@ -60,7 +61,7 @@ class Onchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.dexes_list(network=network, page=page, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.dexes_list(network=network, page=page, request_options=request_options))
 
     def latest_pools_list(
         self,
@@ -86,12 +87,14 @@ class Onchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.latest_pools_list(
-            include=include,
-            page=page,
-            include_gt_community_data=include_gt_community_data,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.latest_pools_list(
+                include=include,
+                page=page,
+                include_gt_community_data=include_gt_community_data,
+                request_options=request_options,
+            ),
+        )
 
     def latest_pools_network(
         self,
@@ -119,13 +122,15 @@ class Onchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.latest_pools_network(
-            network=network,
-            include=include,
-            page=page,
-            include_gt_community_data=include_gt_community_data,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.latest_pools_network(
+                network=network,
+                include=include,
+                page=page,
+                include_gt_community_data=include_gt_community_data,
+                request_options=request_options,
+            ),
+        )
 
     def networks_list(
         self, *, page: int | None = None, request_options: RequestOptionsOrDict | None = None
@@ -142,7 +147,7 @@ class Onchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.networks_list(page=page, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.networks_list(page=page, request_options=request_options))
 
     def onchain_simple_price(
         self,
@@ -177,17 +182,19 @@ class Onchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.onchain_simple_price(
-            network=network,
-            addresses=addresses,
-            include_market_cap=include_market_cap,
-            mcap_fdv_fallback=mcap_fdv_fallback,
-            include_24hr_vol=include_24hr_vol,
-            include_24hr_price_change=include_24hr_price_change,
-            include_total_reserve_in_usd=include_total_reserve_in_usd,
-            include_inactive_source=include_inactive_source,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.onchain_simple_price(
+                network=network,
+                addresses=addresses,
+                include_market_cap=include_market_cap,
+                mcap_fdv_fallback=mcap_fdv_fallback,
+                include_24hr_vol=include_24hr_vol,
+                include_24hr_price_change=include_24hr_price_change,
+                include_total_reserve_in_usd=include_total_reserve_in_usd,
+                include_inactive_source=include_inactive_source,
+                request_options=request_options,
+            ),
+        )
 
     def pool_address(
         self,
@@ -216,14 +223,16 @@ class Onchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.pool_address(
-            network=network,
-            address=address,
-            include=include,
-            include_volume_breakdown=include_volume_breakdown,
-            include_composition=include_composition,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.pool_address(
+                network=network,
+                address=address,
+                include=include,
+                include_volume_breakdown=include_volume_breakdown,
+                include_composition=include_composition,
+                request_options=request_options,
+            ),
+        )
 
     def pool_ohlcv_contract_address(
         self,
@@ -262,18 +271,20 @@ class Onchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.pool_ohlcv_contract_address(
-            network=network,
-            pool_address=pool_address,
-            timeframe=timeframe,
-            aggregate=aggregate,
-            before_timestamp=before_timestamp,
-            limit=limit,
-            currency=currency,
-            token=token,
-            include_empty_intervals=include_empty_intervals,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.pool_ohlcv_contract_address(
+                network=network,
+                pool_address=pool_address,
+                timeframe=timeframe,
+                aggregate=aggregate,
+                before_timestamp=before_timestamp,
+                limit=limit,
+                currency=currency,
+                token=token,
+                include_empty_intervals=include_empty_intervals,
+                request_options=request_options,
+            ),
+        )
 
     def pool_token_info_contract_address(
         self,
@@ -298,9 +309,11 @@ class Onchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.pool_token_info_contract_address(
-            network=network, pool_address=pool_address, include=include, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.pool_token_info_contract_address(
+                network=network, pool_address=pool_address, include=include, request_options=request_options
+            ),
+        )
 
     def pool_trades_contract_address(
         self,
@@ -328,13 +341,15 @@ class Onchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.pool_trades_contract_address(
-            network=network,
-            pool_address=pool_address,
-            trade_volume_in_usd_greater_than=trade_volume_in_usd_greater_than,
-            token=token,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.pool_trades_contract_address(
+                network=network,
+                pool_address=pool_address,
+                trade_volume_in_usd_greater_than=trade_volume_in_usd_greater_than,
+                token=token,
+                request_options=request_options,
+            ),
+        )
 
     def pools_addresses(
         self,
@@ -363,14 +378,16 @@ class Onchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.pools_addresses(
-            network=network,
-            addresses=addresses,
-            include=include,
-            include_volume_breakdown=include_volume_breakdown,
-            include_composition=include_composition,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.pools_addresses(
+                network=network,
+                addresses=addresses,
+                include=include,
+                include_volume_breakdown=include_volume_breakdown,
+                include_composition=include_composition,
+                request_options=request_options,
+            ),
+        )
 
     def search_pools(
         self,
@@ -397,9 +414,11 @@ class Onchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.search_pools(
-            query=query, network=network, include=include, page=page, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.search_pools(
+                query=query, network=network, include=include, page=page, request_options=request_options
+            ),
+        )
 
     def token_data_contract_address(
         self,
@@ -428,14 +447,16 @@ class Onchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.token_data_contract_address(
-            network=network,
-            address=address,
-            include=include,
-            include_composition=include_composition,
-            include_inactive_source=include_inactive_source,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.token_data_contract_address(
+                network=network,
+                address=address,
+                include=include,
+                include_composition=include_composition,
+                include_inactive_source=include_inactive_source,
+                request_options=request_options,
+            ),
+        )
 
     def token_info_contract_address(
         self,
@@ -458,9 +479,11 @@ class Onchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.token_info_contract_address(
-            network=network, address=address, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.token_info_contract_address(
+                network=network, address=address, request_options=request_options
+            ),
+        )
 
     def tokens_data_contract_addresses(
         self,
@@ -488,14 +511,16 @@ class Onchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.tokens_data_contract_addresses(
-            network=network,
-            addresses=addresses,
-            include=include,
-            include_composition=include_composition,
-            include_inactive_source=include_inactive_source,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.tokens_data_contract_addresses(
+                network=network,
+                addresses=addresses,
+                include=include,
+                include_composition=include_composition,
+                include_inactive_source=include_inactive_source,
+                request_options=request_options,
+            ),
+        )
 
     def tokens_info_recent_updated(
         self,
@@ -517,9 +542,11 @@ class Onchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.tokens_info_recent_updated(
-            include=include, network=network, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.tokens_info_recent_updated(
+                include=include, network=network, request_options=request_options
+            ),
+        )
 
     def top_pools_contract_address(
         self,
@@ -553,16 +580,18 @@ class Onchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.top_pools_contract_address(
-            network=network,
-            token_address=token_address,
-            include=include,
-            include_inactive_source=include_inactive_source,
-            page=page,
-            sort=sort,
-            include_gt_community_data=include_gt_community_data,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.top_pools_contract_address(
+                network=network,
+                token_address=token_address,
+                include=include,
+                include_inactive_source=include_inactive_source,
+                page=page,
+                sort=sort,
+                include_gt_community_data=include_gt_community_data,
+                request_options=request_options,
+            ),
+        )
 
     def top_pools_dex(
         self,
@@ -594,15 +623,17 @@ class Onchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.top_pools_dex(
-            network=network,
-            dex=dex,
-            include=include,
-            page=page,
-            sort=sort,
-            include_gt_community_data=include_gt_community_data,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.top_pools_dex(
+                network=network,
+                dex=dex,
+                include=include,
+                page=page,
+                sort=sort,
+                include_gt_community_data=include_gt_community_data,
+                request_options=request_options,
+            ),
+        )
 
     def top_pools_network(
         self,
@@ -632,14 +663,16 @@ class Onchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.top_pools_network(
-            network=network,
-            include=include,
-            page=page,
-            sort=sort,
-            include_gt_community_data=include_gt_community_data,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.top_pools_network(
+                network=network,
+                include=include,
+                page=page,
+                sort=sort,
+                include_gt_community_data=include_gt_community_data,
+                request_options=request_options,
+            ),
+        )
 
     def trending_pools_list(
         self,
@@ -667,13 +700,15 @@ class Onchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.trending_pools_list(
-            include=include,
-            page=page,
-            duration=duration,
-            include_gt_community_data=include_gt_community_data,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.trending_pools_list(
+                include=include,
+                page=page,
+                duration=duration,
+                include_gt_community_data=include_gt_community_data,
+                request_options=request_options,
+            ),
+        )
 
     def trending_pools_network(
         self,
@@ -703,14 +738,16 @@ class Onchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.trending_pools_network(
-            network=network,
-            include=include,
-            page=page,
-            duration=duration,
-            include_gt_community_data=include_gt_community_data,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.trending_pools_network(
+                network=network,
+                include=include,
+                page=page,
+                duration=duration,
+                include_gt_community_data=include_gt_community_data,
+                request_options=request_options,
+            ),
+        )
 
     @property
     def with_raw_response(self) -> OnchainWithRawResponse:
@@ -737,9 +774,9 @@ class AsyncOnchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.dexes_list(network=network, page=page, request_options=request_options)
-        ).unwrap()
+        )
 
     async def latest_pools_list(
         self,
@@ -765,14 +802,14 @@ class AsyncOnchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.latest_pools_list(
                 include=include,
                 page=page,
                 include_gt_community_data=include_gt_community_data,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def latest_pools_network(
         self,
@@ -800,15 +837,15 @@ class AsyncOnchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.latest_pools_network(
                 network=network,
                 include=include,
                 page=page,
                 include_gt_community_data=include_gt_community_data,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def networks_list(
         self, *, page: int | None = None, request_options: RequestOptionsOrDict | None = None
@@ -825,7 +862,7 @@ class AsyncOnchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.networks_list(page=page, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.networks_list(page=page, request_options=request_options))
 
     async def onchain_simple_price(
         self,
@@ -860,7 +897,7 @@ class AsyncOnchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.onchain_simple_price(
                 network=network,
                 addresses=addresses,
@@ -871,8 +908,8 @@ class AsyncOnchain:
                 include_total_reserve_in_usd=include_total_reserve_in_usd,
                 include_inactive_source=include_inactive_source,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def pool_address(
         self,
@@ -901,7 +938,7 @@ class AsyncOnchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.pool_address(
                 network=network,
                 address=address,
@@ -909,8 +946,8 @@ class AsyncOnchain:
                 include_volume_breakdown=include_volume_breakdown,
                 include_composition=include_composition,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def pool_ohlcv_contract_address(
         self,
@@ -949,7 +986,7 @@ class AsyncOnchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.pool_ohlcv_contract_address(
                 network=network,
                 pool_address=pool_address,
@@ -961,8 +998,8 @@ class AsyncOnchain:
                 token=token,
                 include_empty_intervals=include_empty_intervals,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def pool_token_info_contract_address(
         self,
@@ -987,11 +1024,11 @@ class AsyncOnchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.pool_token_info_contract_address(
                 network=network, pool_address=pool_address, include=include, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def pool_trades_contract_address(
         self,
@@ -1019,15 +1056,15 @@ class AsyncOnchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.pool_trades_contract_address(
                 network=network,
                 pool_address=pool_address,
                 trade_volume_in_usd_greater_than=trade_volume_in_usd_greater_than,
                 token=token,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def pools_addresses(
         self,
@@ -1056,7 +1093,7 @@ class AsyncOnchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.pools_addresses(
                 network=network,
                 addresses=addresses,
@@ -1064,8 +1101,8 @@ class AsyncOnchain:
                 include_volume_breakdown=include_volume_breakdown,
                 include_composition=include_composition,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def search_pools(
         self,
@@ -1092,11 +1129,11 @@ class AsyncOnchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.search_pools(
                 query=query, network=network, include=include, page=page, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def token_data_contract_address(
         self,
@@ -1125,7 +1162,7 @@ class AsyncOnchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.token_data_contract_address(
                 network=network,
                 address=address,
@@ -1133,8 +1170,8 @@ class AsyncOnchain:
                 include_composition=include_composition,
                 include_inactive_source=include_inactive_source,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def token_info_contract_address(
         self,
@@ -1157,11 +1194,11 @@ class AsyncOnchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.token_info_contract_address(
                 network=network, address=address, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def tokens_data_contract_addresses(
         self,
@@ -1189,7 +1226,7 @@ class AsyncOnchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.tokens_data_contract_addresses(
                 network=network,
                 addresses=addresses,
@@ -1197,8 +1234,8 @@ class AsyncOnchain:
                 include_composition=include_composition,
                 include_inactive_source=include_inactive_source,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def tokens_info_recent_updated(
         self,
@@ -1220,11 +1257,11 @@ class AsyncOnchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.tokens_info_recent_updated(
                 include=include, network=network, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def top_pools_contract_address(
         self,
@@ -1258,7 +1295,7 @@ class AsyncOnchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.top_pools_contract_address(
                 network=network,
                 token_address=token_address,
@@ -1268,8 +1305,8 @@ class AsyncOnchain:
                 sort=sort,
                 include_gt_community_data=include_gt_community_data,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def top_pools_dex(
         self,
@@ -1301,7 +1338,7 @@ class AsyncOnchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.top_pools_dex(
                 network=network,
                 dex=dex,
@@ -1310,8 +1347,8 @@ class AsyncOnchain:
                 sort=sort,
                 include_gt_community_data=include_gt_community_data,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def top_pools_network(
         self,
@@ -1341,7 +1378,7 @@ class AsyncOnchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.top_pools_network(
                 network=network,
                 include=include,
@@ -1349,8 +1386,8 @@ class AsyncOnchain:
                 sort=sort,
                 include_gt_community_data=include_gt_community_data,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def trending_pools_list(
         self,
@@ -1378,15 +1415,15 @@ class AsyncOnchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.trending_pools_list(
                 include=include,
                 page=page,
                 duration=duration,
                 include_gt_community_data=include_gt_community_data,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def trending_pools_network(
         self,
@@ -1416,7 +1453,7 @@ class AsyncOnchain:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.trending_pools_network(
                 network=network,
                 include=include,
@@ -1424,8 +1461,8 @@ class AsyncOnchain:
                 duration=duration,
                 include_gt_community_data=include_gt_community_data,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncOnchainWithRawResponse:

@@ -14,6 +14,7 @@ from ..core import (
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.categories_list import CategoriesList
 from ..models.category1 import Category1
@@ -56,7 +57,7 @@ class Coins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.coins_categories(order=order, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.coins_categories(order=order, request_options=request_options))
 
     def coins_categories_list(self, *, request_options: RequestOptionsOrDict | None = None) -> list[CategoriesList]:
         """To query all the supported coins categories on CoinGecko
@@ -70,7 +71,7 @@ class Coins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.coins_categories_list(request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.coins_categories_list(request_options=request_options))
 
     def coins_contract_address(
         self,
@@ -94,9 +95,11 @@ class Coins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.coins_contract_address(
-            id_=id_, contract_address=contract_address, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.coins_contract_address(
+                id_=id_, contract_address=contract_address, request_options=request_options
+            ),
+        )
 
     def coins_id(
         self,
@@ -134,18 +137,20 @@ class Coins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.coins_id(
-            id_=id_,
-            localization=localization,
-            tickers=tickers,
-            market_data=market_data,
-            community_data=community_data,
-            developer_data=developer_data,
-            sparkline=sparkline,
-            include_categories_details=include_categories_details,
-            dex_pair_format=dex_pair_format,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.coins_id(
+                id_=id_,
+                localization=localization,
+                tickers=tickers,
+                market_data=market_data,
+                community_data=community_data,
+                developer_data=developer_data,
+                sparkline=sparkline,
+                include_categories_details=include_categories_details,
+                dex_pair_format=dex_pair_format,
+                request_options=request_options,
+            ),
+        )
 
     def coins_id_history(
         self,
@@ -170,9 +175,11 @@ class Coins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.coins_id_history(
-            id_=id_, date=date, localization=localization, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.coins_id_history(
+                id_=id_, date=date, localization=localization, request_options=request_options
+            ),
+        )
 
     def coins_id_market_chart(
         self,
@@ -201,14 +208,16 @@ class Coins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.coins_id_market_chart(
-            id_=id_,
-            vs_currency=vs_currency,
-            days=days,
-            interval=interval,
-            precision=precision,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.coins_id_market_chart(
+                id_=id_,
+                vs_currency=vs_currency,
+                days=days,
+                interval=interval,
+                precision=precision,
+                request_options=request_options,
+            ),
+        )
 
     def coins_id_market_chart_range(
         self,
@@ -237,9 +246,16 @@ class Coins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.coins_id_market_chart_range(
-            id_=id_, vs_currency=vs_currency, from_=from_, to=to, precision=precision, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.coins_id_market_chart_range(
+                id_=id_,
+                vs_currency=vs_currency,
+                from_=from_,
+                to=to,
+                precision=precision,
+                request_options=request_options,
+            ),
+        )
 
     def coins_id_ohlc(
         self,
@@ -265,9 +281,11 @@ class Coins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.coins_id_ohlc(
-            id_=id_, vs_currency=vs_currency, days=days, precision=precision, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.coins_id_ohlc(
+                id_=id_, vs_currency=vs_currency, days=days, precision=precision, request_options=request_options
+            ),
+        )
 
     def coins_id_tickers(
         self,
@@ -302,16 +320,18 @@ class Coins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.coins_id_tickers(
-            id_=id_,
-            exchange_ids=exchange_ids,
-            include_exchange_logo=include_exchange_logo,
-            page=page,
-            order=order,
-            depth=depth,
-            dex_pair_format=dex_pair_format,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.coins_id_tickers(
+                id_=id_,
+                exchange_ids=exchange_ids,
+                include_exchange_logo=include_exchange_logo,
+                page=page,
+                order=order,
+                depth=depth,
+                dex_pair_format=dex_pair_format,
+                request_options=request_options,
+            ),
+        )
 
     def coins_list(
         self,
@@ -333,9 +353,11 @@ class Coins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.coins_list(
-            include_platform=include_platform, status=status, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.coins_list(
+                include_platform=include_platform, status=status, request_options=request_options
+            ),
+        )
 
     def coins_markets(
         self,
@@ -384,23 +406,25 @@ class Coins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.coins_markets(
-            vs_currency=vs_currency,
-            ids=ids,
-            names=names,
-            symbols=symbols,
-            include_tokens=include_tokens,
-            category=category,
-            order=order,
-            per_page=per_page,
-            page=page,
-            sparkline=sparkline,
-            price_change_percentage=price_change_percentage,
-            locale=locale,
-            precision=precision,
-            include_rehypothecated=include_rehypothecated,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.coins_markets(
+                vs_currency=vs_currency,
+                ids=ids,
+                names=names,
+                symbols=symbols,
+                include_tokens=include_tokens,
+                category=category,
+                order=order,
+                per_page=per_page,
+                page=page,
+                sparkline=sparkline,
+                price_change_percentage=price_change_percentage,
+                locale=locale,
+                precision=precision,
+                include_rehypothecated=include_rehypothecated,
+                request_options=request_options,
+            ),
+        )
 
     def contract_address_market_chart(
         self,
@@ -431,15 +455,17 @@ class Coins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.contract_address_market_chart(
-            id_=id_,
-            contract_address=contract_address,
-            vs_currency=vs_currency,
-            days=days,
-            interval=interval,
-            precision=precision,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.contract_address_market_chart(
+                id_=id_,
+                contract_address=contract_address,
+                vs_currency=vs_currency,
+                days=days,
+                interval=interval,
+                precision=precision,
+                request_options=request_options,
+            ),
+        )
 
     def contract_address_market_chart_range(
         self,
@@ -470,15 +496,17 @@ class Coins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.contract_address_market_chart_range(
-            id_=id_,
-            contract_address=contract_address,
-            vs_currency=vs_currency,
-            from_=from_,
-            to=to,
-            precision=precision,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.contract_address_market_chart_range(
+                id_=id_,
+                contract_address=contract_address,
+                vs_currency=vs_currency,
+                from_=from_,
+                to=to,
+                precision=precision,
+                request_options=request_options,
+            ),
+        )
 
     @property
     def with_raw_response(self) -> CoinsWithRawResponse:
@@ -504,7 +532,7 @@ class AsyncCoins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.coins_categories(order=order, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.coins_categories(order=order, request_options=request_options))
 
     async def coins_categories_list(
         self, *, request_options: RequestOptionsOrDict | None = None
@@ -520,7 +548,7 @@ class AsyncCoins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.coins_categories_list(request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.coins_categories_list(request_options=request_options))
 
     async def coins_contract_address(
         self,
@@ -544,11 +572,11 @@ class AsyncCoins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.coins_contract_address(
                 id_=id_, contract_address=contract_address, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def coins_id(
         self,
@@ -586,7 +614,7 @@ class AsyncCoins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.coins_id(
                 id_=id_,
                 localization=localization,
@@ -598,8 +626,8 @@ class AsyncCoins:
                 include_categories_details=include_categories_details,
                 dex_pair_format=dex_pair_format,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def coins_id_history(
         self,
@@ -624,11 +652,11 @@ class AsyncCoins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.coins_id_history(
                 id_=id_, date=date, localization=localization, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def coins_id_market_chart(
         self,
@@ -657,7 +685,7 @@ class AsyncCoins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.coins_id_market_chart(
                 id_=id_,
                 vs_currency=vs_currency,
@@ -665,8 +693,8 @@ class AsyncCoins:
                 interval=interval,
                 precision=precision,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def coins_id_market_chart_range(
         self,
@@ -695,7 +723,7 @@ class AsyncCoins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.coins_id_market_chart_range(
                 id_=id_,
                 vs_currency=vs_currency,
@@ -703,8 +731,8 @@ class AsyncCoins:
                 to=to,
                 precision=precision,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def coins_id_ohlc(
         self,
@@ -730,11 +758,11 @@ class AsyncCoins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.coins_id_ohlc(
                 id_=id_, vs_currency=vs_currency, days=days, precision=precision, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def coins_id_tickers(
         self,
@@ -769,7 +797,7 @@ class AsyncCoins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.coins_id_tickers(
                 id_=id_,
                 exchange_ids=exchange_ids,
@@ -779,8 +807,8 @@ class AsyncCoins:
                 depth=depth,
                 dex_pair_format=dex_pair_format,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def coins_list(
         self,
@@ -802,11 +830,11 @@ class AsyncCoins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.coins_list(
                 include_platform=include_platform, status=status, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def coins_markets(
         self,
@@ -855,7 +883,7 @@ class AsyncCoins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.coins_markets(
                 vs_currency=vs_currency,
                 ids=ids,
@@ -872,8 +900,8 @@ class AsyncCoins:
                 precision=precision,
                 include_rehypothecated=include_rehypothecated,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def contract_address_market_chart(
         self,
@@ -904,7 +932,7 @@ class AsyncCoins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.contract_address_market_chart(
                 id_=id_,
                 contract_address=contract_address,
@@ -913,8 +941,8 @@ class AsyncCoins:
                 interval=interval,
                 precision=precision,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def contract_address_market_chart_range(
         self,
@@ -945,7 +973,7 @@ class AsyncCoins:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.contract_address_market_chart_range(
                 id_=id_,
                 contract_address=contract_address,
@@ -954,8 +982,8 @@ class AsyncCoins:
                 to=to,
                 precision=precision,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncCoinsWithRawResponse:

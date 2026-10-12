@@ -14,6 +14,7 @@ from ..core import (
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.asset_platform import AssetPlatform
 from ..models.enums.filter import FilterOrStr
@@ -41,7 +42,7 @@ class Misc:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.asset_platforms_list(filter_=filter_, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.asset_platforms_list(filter_=filter_, request_options=request_options))
 
     def ping_server(self, *, request_options: RequestOptionsOrDict | None = None) -> PingServer:
         """To check the API server status
@@ -55,7 +56,7 @@ class Misc:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.ping_server(request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.ping_server(request_options=request_options))
 
     def token_lists(
         self, *, asset_platform_id: str = "ethereum", request_options: RequestOptionsOrDict | None = None
@@ -73,9 +74,9 @@ class Misc:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.token_lists(
-            asset_platform_id=asset_platform_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.token_lists(asset_platform_id=asset_platform_id, request_options=request_options)
+        )
 
     @property
     def with_raw_response(self) -> MiscWithRawResponse:
@@ -101,9 +102,9 @@ class AsyncMisc:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.asset_platforms_list(filter_=filter_, request_options=request_options)
-        ).unwrap()
+        )
 
     async def ping_server(self, *, request_options: RequestOptionsOrDict | None = None) -> PingServer:
         """To check the API server status
@@ -117,7 +118,7 @@ class AsyncMisc:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.ping_server(request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.ping_server(request_options=request_options))
 
     async def token_lists(
         self, *, asset_platform_id: str = "ethereum", request_options: RequestOptionsOrDict | None = None
@@ -135,11 +136,11 @@ class AsyncMisc:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.token_lists(
                 asset_platform_id=asset_platform_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncMiscWithRawResponse:

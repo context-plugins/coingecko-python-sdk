@@ -14,6 +14,7 @@ from ..core import (
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.enums.include_tokens import IncludeTokensOrStr
 from ..models.enums.precision import PrecisionOrStr
@@ -63,19 +64,21 @@ class Simple:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.simple_price(
-            vs_currencies=vs_currencies,
-            ids=ids,
-            names=names,
-            symbols=symbols,
-            include_tokens=include_tokens,
-            include_market_cap=include_market_cap,
-            include_24hr_vol=include_24hr_vol,
-            include_24hr_change=include_24hr_change,
-            include_last_updated_at=include_last_updated_at,
-            precision=precision,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.simple_price(
+                vs_currencies=vs_currencies,
+                ids=ids,
+                names=names,
+                symbols=symbols,
+                include_tokens=include_tokens,
+                include_market_cap=include_market_cap,
+                include_24hr_vol=include_24hr_vol,
+                include_24hr_change=include_24hr_change,
+                include_last_updated_at=include_last_updated_at,
+                precision=precision,
+                request_options=request_options,
+            ),
+        )
 
     def simple_supported_currencies(self, *, request_options: RequestOptionsOrDict | None = None) -> list[str]:
         """To query all the supported currencies on CoinGecko
@@ -89,7 +92,7 @@ class Simple:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.simple_supported_currencies(request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.simple_supported_currencies(request_options=request_options))
 
     def simple_token_price(
         self,
@@ -124,17 +127,19 @@ class Simple:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.simple_token_price(
-            id_=id_,
-            contract_addresses=contract_addresses,
-            vs_currencies=vs_currencies,
-            include_market_cap=include_market_cap,
-            include_24hr_vol=include_24hr_vol,
-            include_24hr_change=include_24hr_change,
-            include_last_updated_at=include_last_updated_at,
-            precision=precision,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.simple_token_price(
+                id_=id_,
+                contract_addresses=contract_addresses,
+                vs_currencies=vs_currencies,
+                include_market_cap=include_market_cap,
+                include_24hr_vol=include_24hr_vol,
+                include_24hr_change=include_24hr_change,
+                include_last_updated_at=include_last_updated_at,
+                precision=precision,
+                request_options=request_options,
+            ),
+        )
 
     @property
     def with_raw_response(self) -> SimpleWithRawResponse:
@@ -183,7 +188,7 @@ class AsyncSimple:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.simple_price(
                 vs_currencies=vs_currencies,
                 ids=ids,
@@ -196,8 +201,8 @@ class AsyncSimple:
                 include_last_updated_at=include_last_updated_at,
                 precision=precision,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def simple_supported_currencies(self, *, request_options: RequestOptionsOrDict | None = None) -> list[str]:
         """To query all the supported currencies on CoinGecko
@@ -211,7 +216,7 @@ class AsyncSimple:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.simple_supported_currencies(request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.simple_supported_currencies(request_options=request_options))
 
     async def simple_token_price(
         self,
@@ -246,7 +251,7 @@ class AsyncSimple:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.simple_token_price(
                 id_=id_,
                 contract_addresses=contract_addresses,
@@ -257,8 +262,8 @@ class AsyncSimple:
                 include_last_updated_at=include_last_updated_at,
                 precision=precision,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncSimpleWithRawResponse:

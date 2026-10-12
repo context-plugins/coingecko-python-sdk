@@ -13,6 +13,7 @@ from ..core import (
     async_json_decoder,
     json_decoder,
     raw_error_response,
+    unwrap,
 )
 from ..models.global_de_fi import GlobalDeFi
 from ..models.global_model import GlobalModel
@@ -36,7 +37,7 @@ class GlobalApi:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.crypto_global(request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.crypto_global(request_options=request_options))
 
     def global_defi(self, *, request_options: RequestOptionsOrDict | None = None) -> GlobalDeFi:
         """To query top 100 cryptocurrency global decentralized finance (DeFi) data including DeFi market cap, trading
@@ -51,7 +52,7 @@ class GlobalApi:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.global_defi(request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.global_defi(request_options=request_options))
 
     @property
     def with_raw_response(self) -> GlobalApiWithRawResponse:
@@ -75,7 +76,7 @@ class AsyncGlobalApi:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.crypto_global(request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.crypto_global(request_options=request_options))
 
     async def global_defi(self, *, request_options: RequestOptionsOrDict | None = None) -> GlobalDeFi:
         """To query top 100 cryptocurrency global decentralized finance (DeFi) data including DeFi market cap, trading
@@ -90,7 +91,7 @@ class AsyncGlobalApi:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.global_defi(request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.global_defi(request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncGlobalApiWithRawResponse:

@@ -14,6 +14,7 @@ from ..core import (
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.coins_id_tickers import CoinsIdTickers
 from ..models.enums.days import Days, DaysOrStr
@@ -44,7 +45,7 @@ class Exchanges:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.exchange_rates(request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.exchange_rates(request_options=request_options))
 
     def exchanges(
         self,
@@ -67,7 +68,7 @@ class Exchanges:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.exchanges(per_page=per_page, page=page, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.exchanges(per_page=per_page, page=page, request_options=request_options))
 
     def exchanges_id(
         self,
@@ -91,9 +92,11 @@ class Exchanges:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.exchanges_id(
-            id_=id_, dex_pair_format=dex_pair_format, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.exchanges_id(
+                id_=id_, dex_pair_format=dex_pair_format, request_options=request_options
+            ),
+        )
 
     def exchanges_id_tickers(
         self,
@@ -127,16 +130,18 @@ class Exchanges:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.exchanges_id_tickers(
-            id_=id_,
-            coin_ids=coin_ids,
-            include_exchange_logo=include_exchange_logo,
-            page=page,
-            depth=depth,
-            order=order,
-            dex_pair_format=dex_pair_format,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.exchanges_id_tickers(
+                id_=id_,
+                coin_ids=coin_ids,
+                include_exchange_logo=include_exchange_logo,
+                page=page,
+                depth=depth,
+                order=order,
+                dex_pair_format=dex_pair_format,
+                request_options=request_options,
+            ),
+        )
 
     def exchanges_id_volume_chart(
         self, *, id_: str = "binance", days: DaysOrStr = Days._1, request_options: RequestOptionsOrDict | None = None
@@ -156,9 +161,9 @@ class Exchanges:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.exchanges_id_volume_chart(
-            id_=id_, days=days, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.exchanges_id_volume_chart(id_=id_, days=days, request_options=request_options)
+        )
 
     def exchanges_list(
         self, *, status: StatusOrStr | None = None, request_options: RequestOptionsOrDict | None = None
@@ -175,7 +180,7 @@ class Exchanges:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.exchanges_list(status=status, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.exchanges_list(status=status, request_options=request_options))
 
     @property
     def with_raw_response(self) -> ExchangesWithRawResponse:
@@ -198,7 +203,7 @@ class AsyncExchanges:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.exchange_rates(request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.exchange_rates(request_options=request_options))
 
     async def exchanges(
         self,
@@ -221,9 +226,9 @@ class AsyncExchanges:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.exchanges(per_page=per_page, page=page, request_options=request_options)
-        ).unwrap()
+        )
 
     async def exchanges_id(
         self,
@@ -247,11 +252,11 @@ class AsyncExchanges:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.exchanges_id(
                 id_=id_, dex_pair_format=dex_pair_format, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def exchanges_id_tickers(
         self,
@@ -285,7 +290,7 @@ class AsyncExchanges:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.exchanges_id_tickers(
                 id_=id_,
                 coin_ids=coin_ids,
@@ -295,8 +300,8 @@ class AsyncExchanges:
                 order=order,
                 dex_pair_format=dex_pair_format,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def exchanges_id_volume_chart(
         self, *, id_: str = "binance", days: DaysOrStr = Days._1, request_options: RequestOptionsOrDict | None = None
@@ -316,9 +321,9 @@ class AsyncExchanges:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.exchanges_id_volume_chart(id_=id_, days=days, request_options=request_options)
-        ).unwrap()
+        )
 
     async def exchanges_list(
         self, *, status: StatusOrStr | None = None, request_options: RequestOptionsOrDict | None = None
@@ -335,7 +340,7 @@ class AsyncExchanges:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.exchanges_list(status=status, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.exchanges_list(status=status, request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncExchangesWithRawResponse:

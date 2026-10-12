@@ -14,6 +14,7 @@ from ..core import (
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.derivatives_exchange import DerivativesExchange
 from ..models.derivatives_exchanges_id import DerivativesExchangesId
@@ -50,9 +51,11 @@ class Derivatives:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.derivatives_exchanges(
-            order=order, per_page=per_page, page=page, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.derivatives_exchanges(
+                order=order, per_page=per_page, page=page, request_options=request_options
+            ),
+        )
 
     def derivatives_exchanges_id(
         self,
@@ -75,9 +78,11 @@ class Derivatives:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.derivatives_exchanges_id(
-            id_=id_, include_tickers=include_tickers, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.derivatives_exchanges_id(
+                id_=id_, include_tickers=include_tickers, request_options=request_options
+            ),
+        )
 
     def derivatives_exchanges_list(
         self, *, request_options: RequestOptionsOrDict | None = None
@@ -93,7 +98,7 @@ class Derivatives:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.derivatives_exchanges_list(request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.derivatives_exchanges_list(request_options=request_options))
 
     def derivatives_tickers(self, *, request_options: RequestOptionsOrDict | None = None) -> list[DerivativesTicker]:
         """To query all the tickers from derivatives exchanges on CoinGecko
@@ -107,7 +112,7 @@ class Derivatives:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.derivatives_tickers(request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.derivatives_tickers(request_options=request_options))
 
     @property
     def with_raw_response(self) -> DerivativesWithRawResponse:
@@ -140,11 +145,11 @@ class AsyncDerivatives:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.derivatives_exchanges(
                 order=order, per_page=per_page, page=page, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def derivatives_exchanges_id(
         self,
@@ -167,11 +172,11 @@ class AsyncDerivatives:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.derivatives_exchanges_id(
                 id_=id_, include_tickers=include_tickers, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def derivatives_exchanges_list(
         self, *, request_options: RequestOptionsOrDict | None = None
@@ -187,7 +192,7 @@ class AsyncDerivatives:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.derivatives_exchanges_list(request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.derivatives_exchanges_list(request_options=request_options))
 
     async def derivatives_tickers(
         self, *, request_options: RequestOptionsOrDict | None = None
@@ -203,7 +208,7 @@ class AsyncDerivatives:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.derivatives_tickers(request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.derivatives_tickers(request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncDerivativesWithRawResponse:

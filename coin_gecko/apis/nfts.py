@@ -14,6 +14,7 @@ from ..core import (
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.enums.order7 import Order7OrStr
 from ..models.nftdata import Nftdata
@@ -46,9 +47,11 @@ class Nfts:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.nfts_contract_address(
-            asset_platform_id=asset_platform_id, contract_address=contract_address, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.nfts_contract_address(
+                asset_platform_id=asset_platform_id, contract_address=contract_address, request_options=request_options
+            ),
+        )
 
     def nfts_id(self, *, id_: str = "pudgy-penguins", request_options: RequestOptionsOrDict | None = None) -> Nftdata:
         """To query all the NFT data (name, floor price, 24hr volume, ...) based on the NFT collection ID
@@ -63,7 +66,7 @@ class Nfts:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.nfts_id(id_=id_, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.nfts_id(id_=id_, request_options=request_options))
 
     def nfts_list(
         self,
@@ -87,9 +90,11 @@ class Nfts:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.nfts_list(
-            order=order, per_page=per_page, page=page, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.nfts_list(
+                order=order, per_page=per_page, page=page, request_options=request_options
+            ),
+        )
 
     @property
     def with_raw_response(self) -> NftsWithRawResponse:
@@ -121,11 +126,11 @@ class AsyncNfts:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.nfts_contract_address(
                 asset_platform_id=asset_platform_id, contract_address=contract_address, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def nfts_id(
         self, *, id_: str = "pudgy-penguins", request_options: RequestOptionsOrDict | None = None
@@ -142,7 +147,7 @@ class AsyncNfts:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.nfts_id(id_=id_, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.nfts_id(id_=id_, request_options=request_options))
 
     async def nfts_list(
         self,
@@ -166,11 +171,11 @@ class AsyncNfts:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.nfts_list(
                 order=order, per_page=per_page, page=page, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncNftsWithRawResponse:

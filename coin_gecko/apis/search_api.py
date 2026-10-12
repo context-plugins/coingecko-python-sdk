@@ -14,6 +14,7 @@ from ..core import (
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.search import Search
 from ..models.trending_search import TrendingSearch
@@ -37,7 +38,7 @@ class SearchApi:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.search_data(query, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.search_data(query, request_options=request_options))
 
     def trending_search(self, *, request_options: RequestOptionsOrDict | None = None) -> TrendingSearch:
         """To query trending search coins, NFTs and categories on CoinGecko in the last 24 hours
@@ -51,7 +52,7 @@ class SearchApi:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.trending_search(request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.trending_search(request_options=request_options))
 
     @property
     def with_raw_response(self) -> SearchApiWithRawResponse:
@@ -75,7 +76,7 @@ class AsyncSearchApi:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.search_data(query, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.search_data(query, request_options=request_options))
 
     async def trending_search(self, *, request_options: RequestOptionsOrDict | None = None) -> TrendingSearch:
         """To query trending search coins, NFTs and categories on CoinGecko in the last 24 hours
@@ -89,7 +90,7 @@ class AsyncSearchApi:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.trending_search(request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.trending_search(request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncSearchApiWithRawResponse:

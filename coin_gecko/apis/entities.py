@@ -14,6 +14,7 @@ from ..core import (
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.entities_list import EntitiesList
 from ..models.enums.entity import Entity, EntityOrStr
@@ -53,9 +54,16 @@ class Entities:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.companies_public_treasury(
-            entity=entity, coin_id=coin_id, per_page=per_page, page=page, order=order, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.companies_public_treasury(
+                entity=entity,
+                coin_id=coin_id,
+                per_page=per_page,
+                page=page,
+                order=order,
+                request_options=request_options,
+            ),
+        )
 
     def entities_list(
         self,
@@ -79,9 +87,11 @@ class Entities:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.entities_list(
-            entity_type=entity_type, per_page=per_page, page=page, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.entities_list(
+                entity_type=entity_type, per_page=per_page, page=page, request_options=request_options
+            ),
+        )
 
     @property
     def with_raw_response(self) -> EntitiesWithRawResponse:
@@ -118,7 +128,7 @@ class AsyncEntities:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.companies_public_treasury(
                 entity=entity,
                 coin_id=coin_id,
@@ -126,8 +136,8 @@ class AsyncEntities:
                 page=page,
                 order=order,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def entities_list(
         self,
@@ -151,11 +161,11 @@ class AsyncEntities:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.entities_list(
                 entity_type=entity_type, per_page=per_page, page=page, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncEntitiesWithRawResponse:

@@ -14,6 +14,7 @@ from ..core import (
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.enums.order6 import Order6OrStr
 from ..models.public_treasury_entity import PublicTreasuryEntity
@@ -50,12 +51,14 @@ class PublicTreasuryApi:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.public_treasury_entity(
-            entity_id=entity_id,
-            holding_amount_change=holding_amount_change,
-            holding_change_percentage=holding_change_percentage,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.public_treasury_entity(
+                entity_id=entity_id,
+                holding_amount_change=holding_amount_change,
+                holding_change_percentage=holding_change_percentage,
+                request_options=request_options,
+            ),
+        )
 
     def public_treasury_entity_chart(
         self,
@@ -82,13 +85,15 @@ class PublicTreasuryApi:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.public_treasury_entity_chart(
-            entity_id=entity_id,
-            coin_id=coin_id,
-            days=days,
-            include_empty_intervals=include_empty_intervals,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.public_treasury_entity_chart(
+                entity_id=entity_id,
+                coin_id=coin_id,
+                days=days,
+                include_empty_intervals=include_empty_intervals,
+                request_options=request_options,
+            ),
+        )
 
     def public_treasury_transaction_history(
         self,
@@ -117,14 +122,16 @@ class PublicTreasuryApi:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.public_treasury_transaction_history(
-            entity_id=entity_id,
-            per_page=per_page,
-            page=page,
-            order=order,
-            coin_ids=coin_ids,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.public_treasury_transaction_history(
+                entity_id=entity_id,
+                per_page=per_page,
+                page=page,
+                order=order,
+                coin_ids=coin_ids,
+                request_options=request_options,
+            ),
+        )
 
     @property
     def with_raw_response(self) -> PublicTreasuryApiWithRawResponse:
@@ -159,14 +166,14 @@ class AsyncPublicTreasuryApi:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.public_treasury_entity(
                 entity_id=entity_id,
                 holding_amount_change=holding_amount_change,
                 holding_change_percentage=holding_change_percentage,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def public_treasury_entity_chart(
         self,
@@ -193,15 +200,15 @@ class AsyncPublicTreasuryApi:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.public_treasury_entity_chart(
                 entity_id=entity_id,
                 coin_id=coin_id,
                 days=days,
                 include_empty_intervals=include_empty_intervals,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def public_treasury_transaction_history(
         self,
@@ -230,7 +237,7 @@ class AsyncPublicTreasuryApi:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.public_treasury_transaction_history(
                 entity_id=entity_id,
                 per_page=per_page,
@@ -238,8 +245,8 @@ class AsyncPublicTreasuryApi:
                 order=order,
                 coin_ids=coin_ids,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncPublicTreasuryApiWithRawResponse:
